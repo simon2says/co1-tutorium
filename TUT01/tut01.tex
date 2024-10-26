@@ -1,0 +1,227 @@
+\documentclass{scrartcl} % file is in UTF-8 Encoding
+
+\usepackage[T1]{fontenc}
+
+\addtolength{\textwidth}{2cm}
+\addtolength{\oddsidemargin}{-1,3cm}
+\addtolength{\topmargin}{-2.5cm}
+\addtolength{\textheight}{6cm}
+\addtolength{\footskip}{1cm}
+\typearea{13}
+
+\marginparwidth=1.0in
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{ae,aecompl}         % für gute PDF-Fonts
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Own Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\N}{\mathbb N}
+\DeclareMathOperator{\Q}{\mathbb Q}
+\DeclareMathOperator{\R}{\mathbb R}
+\DeclareMathOperator{\Z}{\mathbb Z}
+
+% Unser Kopf
+\newcommand{\university}{Technische Universität Berlin}
+\newcommand{\semester}{WiSe 2024/2025}
+\newcommand{\faculty}{Fakultät II, Institut für Mathematik}
+\newcommand{\head}
+{
+	\noindent \textbf{\university} \hfill
+	\textbf{\semester} \\
+	\textbf{\faculty} \\
+}
+
+\newcommand{\Bemerkung}[1]{\par\noindent \textbf{Bemerkung:} #1 \xspace}
+\newtheorem{theorem}{Satz}
+\newtheorem*{theorem*}{Satz}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\theoremstyle{remark}
+\newtheorem{claim}[theorem]{Behauptung}
+
+\newcommand{\student}[2]{#1 & #2\\}  
+\newcommand{\group}[1]{\underline{Gruppe #1}}
+
+
+% Farbschema fuer Listings
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=none,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{auf}\setcounter{auf}{0}
+\newenvironment{aufgabe}
+{
+	\addvspace{\medskipamount}
+	\refstepcounter{auf}
+	\noindent
+	\textbf{\arabic{auf}. Aufgabe}
+	\nopagebreak{\medskip \par}
+}
+
+\newcommand{\haloesung}[1]{
+	\begin{center}
+		{\large \bfseries Lösungen zum #1.\ Tutoriumsblatt Computerorientierte Mathematik I}
+		\vskip1ex
+	\end{center}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+\fancypagestyle{startseite}{
+	\fancyhead[L]{\includegraphics[width=1cm]{C:/Users/chole/Documents/tub/tublogo.png}}
+	\fancyhead[R]{{\bfseries\university\\ \faculty}}
+	\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+}
+\setlength{\headheight}{33pt}
+\thispagestyle{startseite}
+
+%---------------- VARS --------------%
+\newcommand{\headvorlage}{	
+	\begin{tabular}{@{}l r}
+		\student{Simon Seemüller}{513084}
+	\end{tabular}\hfill \textbf{\semester} \\
+	\haloesung{1}
+}
+
+\begin{document}
+	\headvorlage
+	\setcounter{auf}{1}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\roman*)]
+			\item $3\in \R_{\geq 0} \land\; 4 \notin \R_{\geq 0}$
+			\item $\pi \notin \Q \land 1 \in \Q$
+			\item $\forall x: x \in A \implies x \in R$
+			\item $\forall x \in \R_{\geq 0} \exists y \in \R: y^2 = x$
+			\item $\forall \alpha > 0 \exists n_0 \in \N: \forall n \geq n_0: f(n) \leq \alpha \cdot g(n)$
+		\end{enumerate}
+		Inversion:
+		\begin{enumerate}[label=(\roman*)]
+			\item $3 \notin \R_{\geq 0} \lor\; 4\in \R_{\geq 0}$, vier ist positiv oder drei ist es nicht.
+			\item $\pi \in \Q \lor 1 \notin \Q$, $\pi$ ist in $\Q$ oder $1$ ist es nicht.
+			\item $\exists x: x \in A \land x \notin R$, es existiert ein Apfel, der nicht rot ist.
+			\item $\exists x \in \R_{\geq 0} \nexists y \in \R: y^2 = x$, es existiert eine positive reelle Zahl $x$, die keine reelle Wurzel besitzt. 
+			\item $\exists \alpha > 0 \nexists!n_0 \in \N: \forall n \geq n_0 : f(n) \leq \alpha \cdot g(n)$
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\roman*)]
+			\item today.weekday = mon $\implies$ today.lecture = true
+			\item lights.show = green $\implies$ we.drive = true
+			\item $x^2 \in \Z \implies x \in \Z$
+			\item $x^2 \mod 2 = 1 \implies x \mod 2 = 1$
+			\item $x\in \R_{\geq 0} \implies \exists y: y^2 = x$
+		\end{enumerate}
+		Kontraposition:
+		\begin{enumerate}[label=(\roman*)]
+			\item today.lecture = false $\implies$ today.weekday $\neq$ monday -- weil heute keine Vorlesung ist, ist heute nicht Montag.
+			\item we.drive = false $\implies$ lights.show $\neq$ green -- weil wir nicht fahren, ist die Ampel nicht grün.
+			\item $x \notin \Z \implies x^2 \notin \Z$ -- wenn $x$ nicht in $\Z$ ist, ist $x^2$ nicht in $\Z$
+			\item $x \mod 2 = 0 \implies x^2 \mod 2 = 0$ -- wenn $x$ gerade ist, ist $x^2$ auch gerade.
+			\item $\nexists y: y^2 = x \implies x\notin \R_{\geq 0}$ -- wenn kein $y$ existiert, sodass $y^2=x$, dann ist $x$ keine positive reelle Zahl.
+		\end{enumerate}
+	\end{aufgabe}
+	\newpage
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\roman*)]
+			\item 
+			\begin{enumerate}[label=\alph*)]
+				\item $f(x) = x, g(x) = 2024x, \alpha = \frac{1}{2023}, n_0 = 0$
+				\item $f(x) = 14x^3, g(x) = x^4 + 6x^3, \alpha = 1, n_0 = 8$
+				\item $f(x) = 3^x, g(x) = x!, \alpha = 5, n_0 = 0$
+			\end{enumerate}
+			\item Für alle Funktionspaare gilt, dass $g(x) \geq f(x)$ für besonders große Eingaben. Es gilt: $\mathcal{O}(x) \subseteq \mathcal{O}(2024x), \mathcal{O}(14x^3) \subseteq \mathcal{O}(x^4+6x^3), \mathcal{O}(3^x) \subseteq \mathcal{O}(x!)$
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\roman*)]
+			\item Für die Eingabe von außen gibt es folgende Möglichkeit:
+		\begin{lstlisting}[language=Python,caption={platz für mehr lel},captionpos=b]
+		
+		var = input("Gif input plz: ")
+		
+		
+		\end{lstlisting}
+			Eine Funktion ist eine Abbildung, die beliebig viele Parameter erhält und sie zu einem eindeutigen Ergebnis umwandelt. Funktionen werden genutzt, um Abläufe zu vereinfachen, indem die ständig gleichen Abläufe zu einer Funktion zusammengefasst werden.
+		\item \begin{lstlisting}[language=Python, caption=Mit Userinput,captionpos=b]
+		
+		num1 = int(input("Bitte die erste Zahl eingeben: "))
+		num2 = int(input("Bitte die zweite Zahl eingeben: "))
+		print("Die Summe ist %i." %(num1 + num2))
+		\end{lstlisting}
+		
+		\begin{lstlisting}[language=Python, caption = Mit Funktion, captionpos=b]
+		
+		def summe(num1, num2):
+			return num1 + num2
+		
+		num1 = int(input("Bitte die erste Zahl eingeben: "))
+		num2 = int(input("Bitte die zweite Zahl eingeben: "))
+		print(summe(num1, num2))
+		\end{lstlisting}
+		\newpage
+		\item Das Programm gibt den größten gemeinsamen Teiler der beiden Zahlen aus.
+		\begin{lstlisting}[language=Python, caption=GgT, captionpos=b]
+			
+		def ggt(a, b):
+			while (b != 0):
+				if(a > b):
+					a = a - b
+				else:
+					b = b - a
+			return a
+		
+		a = int(input("Bitte erste Zahl eingeben: "))
+		b = int(input("Bitte zweite Zahl eingeben: "))
+		print(ggt(a,b))
+		\end{lstlisting}
+		\end{enumerate}
+	\end{aufgabe}
+	
+\end{document}
