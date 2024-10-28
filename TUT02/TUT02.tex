@@ -1,0 +1,295 @@
+\documentclass{scrartcl} % file is in UTF-8 Encoding
+
+\usepackage[T1]{fontenc}
+
+\addtolength{\textwidth}{2cm}
+\addtolength{\oddsidemargin}{-1,3cm}
+\addtolength{\topmargin}{-2.5cm}
+\addtolength{\textheight}{6cm}
+\addtolength{\footskip}{1cm}
+\typearea{13}
+
+\marginparwidth=1.0in
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{ae,aecompl}         % für gute PDF-Fonts
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Own Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\N}{\mathbb N}
+\DeclareMathOperator{\Q}{\mathbb Q}
+\DeclareMathOperator{\R}{\mathbb R}
+\DeclareMathOperator{\Z}{\mathbb Z}
+
+% Unser Kopf
+\newcommand{\university}{Technische Universität Berlin}
+\newcommand{\semester}{WiSe 2024/2025}
+\newcommand{\faculty}{Fakultät II, Institut für Mathematik}
+\newcommand{\head}
+{
+	\noindent \textbf{\university} \hfill
+	\textbf{\semester} \\
+	\textbf{\faculty} \\
+}
+
+\newcommand{\Bemerkung}[1]{\par\noindent \textbf{Bemerkung:} #1 \xspace}
+\newtheorem{theorem}{Satz}
+\newtheorem*{theorem*}{Satz}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\theoremstyle{remark}
+\newtheorem{claim}[theorem]{Behauptung}
+
+\newcommand{\student}[2]{#1 & #2\\}  
+\newcommand{\group}[1]{\underline{Gruppe #1}}
+
+
+% Farbschema fuer Listings
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=none,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{auf}\setcounter{auf}{0}
+\newenvironment{aufgabe}
+{
+	\addvspace{\medskipamount}
+	\refstepcounter{auf}
+	\noindent
+	\textbf{\arabic{auf}. Tutoriumsaufgabe}
+	\nopagebreak{\medskip \par}
+}
+
+\newcommand{\haloesung}[1]{
+	\begin{center}
+		{\large \bfseries Lösungen zum #1.\ Tutoriumsblatt Computerorientierte Mathematik I}
+		\vskip1ex
+	\end{center}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+\fancypagestyle{startseite}{
+	\fancyhead[L]{\includegraphics[width=1cm]{C:/Users/chole/Documents/tub/tublogo.png}}
+	\fancyhead[R]{{\bfseries\university\\ \faculty}}
+	\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+}
+\setlength{\headheight}{33pt}
+\thispagestyle{startseite}
+
+%---------------- VARS --------------%
+\newcommand{\headvorlage}{	
+	\begin{tabular}{@{}l r}
+		\student{Simon Seemüller}{513084}
+	\end{tabular}\hfill \textbf{\semester} \\
+	\haloesung{2}
+}
+
+\begin{document}
+	\headvorlage
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item \[ R_1 = \{ (x,y) \in [-4,4] \times \R: y + \frac{x^2}{2} = 4\}
+			\]
+			ist eine Funktion, da $\forall x \in [-4,4] \exists y \in \R: y = -\frac{x^2}{2} + 4$.
+			
+			ist nicht injektiv, da bspw. 
+			\[
+				f(1) = f(-1)
+			\]
+			ist nicht surjektiv, da bspw.
+			\[
+				\forall x \in [-4,4]: -\frac{x^2}{2} + 4 \neq 5
+			\]
+			
+			\item \[ R_2 = \{ (x,y) \in [-4,4] \times \R: y^2 = x\}
+			\]
+			ist keine Funktion, da $\forall y \in \R: y^2 \neq -4$
+			
+			ist injektiv.
+			
+			ist nicht surjektiv, da $\forall x \in [-4,4]: x \neq 3^2$
+			
+			\item \[ R_3 = \{(x,y) \in \{0,1,2\} \times \{1,2,3\}: x + 2 = y\}
+			\]
+			ist keine Funktion, da $\forall y \in \{1,2,3\}: 2 + 2 \neq y$
+			
+			ist injektiv.
+			
+			ist nicht surjektiv, da $\forall x \in \{0,1,2\}: x + 2 \neq 1$
+			
+			\item \[ R_4 = \{(x,y) \in \R \times \R: x + 2 = y\}
+			\]
+			ist eine Funktion.
+			
+			ist injektiv.
+			
+			ist surjektiv.
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item zu zeigen: 
+			\[
+				\forall n \in \N: \sum_{i = 1}^{n}i = \frac{n(n+1)}{2}
+			\]
+			\begin{proof}[Beweis per vollständiger Induktion.]
+				Induktionsanfang $(n = 0)$:
+				\begin{align*}
+					\sum_{i = 1}^{0}i &= \frac{0 (0 + 1)}{2}\\
+					0 &= 0
+				\end{align*}
+				
+				Induktionsschluss $(n \to n+1)$:
+				\begin{align*}
+					\sum_{i = 1}^{n+1} i &= \frac{(n+1)(n+1+1)}{2}\\ 
+					\sum_{i = 1}^{n} i + (n+1) &= \frac{(n+1)(n+2)}{2}\\
+					\frac{n(n+1)}{2} + n+1 &= \frac{n^2 + 3n + 2}{2}\\
+					\frac{n^2 + n}{2} + \frac{2n + 2}{2} &= \frac{n^2 + 3n + 2}{2}\\
+					\frac{n^2 + 3n + 2}{2} &= \frac{n^2 + 3n + 2}{2}
+				\end{align*}
+			\end{proof}
+			\item zu zeigen: \[
+			\forall n \in \N: \sum_{i = 1}^{n} (2i - 1) = n^2
+			\]
+			\begin{proof}[Beweis per vollständiger Induktion.]
+				Induktionsanfang $(n = 0)$:
+				\begin{align*}
+					\sum_{i = 1}^{0} (2i - 1) &= 0^2\\
+					0 &= 0
+				\end{align*}
+				Induktionsschluss $(n \to n + 1)$:
+				\begin{align*}
+					\sum_{i = 1}^{n + 1}(2i - 1) &= (n+1)^2 \\
+					\sum_{i = 1}^{n}(2i - 1) + 2(n+1) - 1 &= n^2 + 2n + 1\\
+					n^2 + 2n + 2 - 1 &= n^2 + 2n + 1\\
+					n^2 + 2n + 1 &= n^2 + 2n + 1
+				\end{align*}
+			\end{proof}
+			\item zu zeigen: \[
+			\forall n \in \N \forall x \in \R, x \neq 1: \sum_{i = 0}^{n}x^i = \frac{1 - x^{n+1}}{1 - x}
+			\]
+			\begin{proof}[Beweis per vollständiger Induktion.]
+				Induktionsanfang $(n = 0)$:
+				\begin{align*}
+					\sum_{i = 0}^{0}x^i &= \frac{1 - x^{0+1}}{1 - x}\\
+					1 &= \frac{1 - x}{1 - x}\\
+					1 &= 1
+				\end{align*}
+				Induktionsschluss $(n \to n + 1)$:
+				\begin{align*}
+					\sum_{i = 0}^{n + 1}x^i &= \frac{1 - x^{n+2}}{1 - x}\\
+					\sum_{i = 0}^{n}x^i + x^{n+1} &= \frac{1-x^{n+2}}{1-x}\\
+					\frac{1-x^{n+1}}{1-x} + x^{n+1} &= \frac{1-x^{n+2}}{1-x}\\
+					\frac{1 - x^{n+1}}{1-x} + \frac{(1-x)x^{n+1}}{1 - x} &= \frac{1-x^{n+2}}{1-x}\\
+					\frac{1 - x^{n+1} + x^{n+1} - x^{n+2}}{1 - x} &= \frac{1 - x^{n+2}}{1 - x}\\
+					\frac{1 - x^{n+2}}{1-x} &= \frac{1 - x^{n+2}}{1 - x}
+				\end{align*}
+			\end{proof}
+			\item zu zeigen: $\exists n \in \N: 7 \mid 8^n \implies 7 \mid 8^{n+1}$.
+			\begin{proof}
+				Falls $7 \mid 8^n$, so gilt: $8^n = 7\cdot a, a \in \Z$. Nun zeigen wir, dass $7\mid 8^{n+1}$.
+				\begin{align*}
+					7 &\mid 8^{n+1}\\
+					7 &\mid 8^n \cdot 8\\
+					7 &\mid 7\cdot a \cdot 8
+				\end{align*}
+				gilt.
+			\end{proof}
+			Allgemein kann $7 \mid 8^n$ nicht gelten, da $8^n = (2^3)^n$. Allgemein ist also in der Primfaktorzerlegung
+			\[
+				8^n = \underbrace{2\cdot 2 \cdot \ldots \cdot 2}_{3n}
+			\]
+			Keiner der Primfaktoren kann $7$ sein, also ist $8^n$ nicht durch $7$ teilbar.
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item \label{item:polyon}
+			zu zeigen:
+			\[
+				\exists \alpha >0 \exists n_0 \in \R_{>0} \forall n \geq n_0: 0 \leq \sum_{\ell = 0}^{k}a_\ell n^\ell \leq \alpha n^k
+			\]
+			\begin{proof}
+				Wähle $\alpha = \sum_{\ell = 0}^{k}\lvert a_\ell\rvert$. Dann ist:
+				\newpage
+				\begin{align*}
+					\alpha n^k &= \lvert a_0\rvert n^k + \lvert a_1\rvert n^k + \ldots + \lvert a_k\rvert n^k
+					\intertext{und}
+					\sum_{\ell = 0}^{k}a_l n^l &= a_0 n^0 + a_1 n^1 + \ldots + a_k n^k
+				\end{align*}
+				Damit gilt \[
+					\sum_{\ell = 0}^{k} a_\ell n^\ell \leq \alpha n^k.
+				\]
+			\end{proof}
+			\item zu zeigen:
+			\[
+				\exists \alpha > 0 \exists n_0 \in \R \forall k \in \N \forall \delta > 0 \forall n \geq n_0: 0 \leq \sum_{\ell=0}^{k}a_\ell n^\ell \leq \alpha \sum_{j=0}^{\infty}\frac{(\delta n)^j}{j!}
+			\]
+			\begin{proof}
+				\begin{align*}
+					\sum_{\ell=0}^{k}a_\ell n^\ell &\leq \alpha \sum_{j=0}^{\infty}\frac{(\delta n)^j}{j!}
+					\intertext{Nach \ref{item:polyon} kann ich die linke Seite nach oben abschätzen. Die rechte Seite schätze ich außerdem nach unten ab wie folgt:}
+					\alpha' n^k &\leq \alpha \sum_{j=0}^{k}\frac{(\delta n)^j}{j!}
+					\intertext{Rechts schätze ich weiter ab:}
+					\alpha' n^k &\leq \alpha \frac{(\delta n)^k}{k!}\\
+					\Longleftrightarrow \hspace*{7ex}\alpha' n^k &\leq \alpha \frac{\delta^k n^k}{k!}
+					\intertext{Nun kann ich $\alpha = \frac{\alpha'k!}{\delta^k}$ setzen. Dann ist}
+					\alpha'n^k &\leq \alpha' n^k
+				\end{align*}
+			\end{proof}
+			\item \[
+				\mathcal{O}(a(n)) \subset \mathcal{O}(e(n))\subset \mathcal{O}(b(n)) \subset \mathcal{O}(d(n)) \subset \mathcal{O}(c(n))
+			\]
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		Wir mischen die eine Hälfte der Biere in einem Becher zusammen. Zeigt der Teststreifen positiv, so teilen wir die aktuelle Hälfte in zwei Hälften ein und starten am Anfang. Zeigt der Teststreifen negativ, so teilen wir die andere Hälfte in zwei Hälften ein und starten am Anfang.
+	\end{aufgabe}
+\end{document}
