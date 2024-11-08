@@ -1,0 +1,197 @@
+\documentclass{scrartcl} % file is in UTF-8 Encoding
+
+\usepackage[T1]{fontenc}
+
+\addtolength{\textwidth}{2cm}
+\addtolength{\oddsidemargin}{-1,3cm}
+\addtolength{\topmargin}{-2.5cm}
+\addtolength{\textheight}{6cm}
+\addtolength{\footskip}{1cm}
+\typearea{13}
+
+\marginparwidth=1.0in
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{ae,aecompl}         % für gute PDF-Fonts
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage[ruled, linesnumbered, noline]{algorithm2e}
+\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Own Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\N}{\mathbb N}
+\DeclareMathOperator{\Q}{\mathbb Q}
+\DeclareMathOperator{\R}{\mathbb R}
+\DeclareMathOperator{\Z}{\mathbb Z}
+
+% Unser Kopf
+\newcommand{\university}{Technische Universität Berlin}
+\newcommand{\semester}{WiSe 2024/2025}
+\newcommand{\faculty}{Fakultät II, Institut für Mathematik}
+\newcommand{\head}
+{
+	\noindent \textbf{\university} \hfill
+	\textbf{\semester} \\
+	\textbf{\faculty} \\
+}
+
+\newcommand{\Bemerkung}[1]{\par\noindent \textbf{Bemerkung:} #1 \xspace}
+\newtheorem{theorem}{Satz}
+\newtheorem*{theorem*}{Satz}
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+\theoremstyle{remark}
+\newtheorem{claim}[theorem]{Behauptung}
+
+\newcommand{\student}[2]{#1 & #2\\}  
+\newcommand{\group}[1]{\underline{Gruppe #1}}
+
+
+% Farbschema fuer Listings
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\hypersetup{linkbordercolor=backcolour}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{auf}\setcounter{auf}{0}
+\newenvironment{aufgabe}
+{
+	\addvspace{\medskipamount}
+	\refstepcounter{auf}
+	\noindent
+	\textbf{\arabic{auf}. Tutoriumsaufgabe}
+	\nopagebreak{\medskip \par}
+}
+
+\newcommand{\haloesung}[1]{
+	\begin{center}
+		{\large \bfseries Lösungen zum #1.\ Tutoriumsblatt Computerorientierte Mathematik I}
+		\vskip1ex
+	\end{center}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+\fancypagestyle{startseite}{
+	\fancyhead[L]{\includegraphics[width=1cm]{C:/Users/chole/Documents/tub/tublogo.png}}
+	\fancyhead[R]{{\bfseries\university\\ \faculty}}
+	\fancyfoot[C]{-- \thepage\ of \pageref{LastPage} --}
+}
+\setlength{\headheight}{33pt}
+\thispagestyle{startseite}
+
+%---------------- VARS --------------%
+\newcommand{\headvorlage}{	
+	\begin{tabular}{@{}l r}
+		\student{Simon Seemüller}{513084}
+	\end{tabular}\hfill \textbf{\semester} \\
+	\haloesung{3}
+}
+
+\begin{document}
+	\headvorlage
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item \begin{itemize}
+				\item $(1101)_2 = 13$
+				\item $25 = (11001)_2$
+				\item $789 = (11124)_5$
+ 			\end{itemize}
+			\item Die größte Zahl, die in $\ell$ Ziffern in $b$-adischer Darstellung dargestellt werden kann, ist $b^\ell - 1$.
+			\item Die Länge von $z$ in $b$-adischer Darstellung beträgt $\ell = \lfloor \log_b(z) \rfloor + 1.$
+			\item $(0110111100110101)_{2} = (6F35)_{16}$
+			\item \begin{itemize}
+				\item $(1101)_2 + (110)_2 = (10011)_2$
+				\item $(1101)_2 - (110)_2 = (111)_2$
+				\item $(1101)_2 \cdot (110)_2 = (1001110)$
+				\item $(1101)_2 \div (110)_2 = (1.0\overline{01})_2$
+			\end{itemize}
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item $K_2^8(01100110) = 10011010$
+			\item $-5$ wird in das Zweierkomplement mit Länge $4$ übersetzt, indem fünf von der Zahl $10000$ subtrahiert wird. Man erhält so $10000 - 101 = 1011$. Wenn stattdessen acht Stellen zur Verfügung stehen, werden die restlichen vorne mit $1$ aufgefüllt.
+			\item Die Zweierkomplementdarstellung von $a29c1f$ ist $5d63e1$, da $1000000 - a29c1f = 5d63e1$. $n$ ist negativ, da die Zahl sich in der oberen Hälfte des Zahlenbereichs befindet.
+			\item Die Zahl $11001100$ in Zweierkomplement beschreibt die Zahl $-52$. Sie befindet sich in der oberen Hälfte des Zahlenbereiches, ist also negativ, daher nehmen wir das Ergebnis der Subtraktion.
+			\item Die beiden Zahlen können einfach zusammenaddiert werden und ergeben dann $2212$, die Zweierkomplementdarstellung für das Ergebnis der Addition von $17$ und $-21$, also $-4$.
+			\item $10 - 15$ im Zweierkomplement sind $10 = (1010)_2$ und $-15 = (10001)_2$. Die Addition der beiden ergibt $(1010)_2 + (10001)_2 = (11011)_2$, was das Zweierkomplement für $-5$ ist. Falls $-2-15$ gerechnet wird, ist das Ergebnis unterhalb der erlaubten unteren Bereichsgrenze von $-\lfloor \frac{b^l}{2}\rfloor$
+		\end{enumerate}
+	\end{aufgabe}
+	\newpage
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item\hspace*{1ex}\\[-2ex]
+			\lstinputlisting[language=Python, firstline=1,lastline=4,caption={Berechnung des Maximums zweier Zahlen}]{./python/maximum.py}%
+			\item\hspace*{1ex}\\[-2ex]
+			\lstinputlisting[language=Python, firstline = 6, caption={Berechnung des Maximums dreier Zahlen}]{./python/maximum.py}%
+			\item\hspace*{1ex}\\[-2ex]
+			\lstinputlisting[language=Python, caption={Berechnung der Fakultät einer Zahl $n$}]{./python/fac.py}
+			\item\hspace*{1ex}\\[-2ex]
+			\lstinputlisting[language=Python, caption={Berechnung der Summe der ersten $n$ geraden Zahlen, Variante 1},lastline=5]{./python/sum.py}
+			\lstinputlisting[language=Python, caption={Berechnung der Summe der ersten $n$ geraden Zahlen, Variante 2},firstline=7,lastline=16]{./python/sum.py}
+			\newpage
+			\item\hspace*{1ex}\\[-2ex]
+			\lstinputlisting[language=Python, caption={Berechnung der Collatz-Folge einer Zahl $n$}]{./python/collatz.py}
+		\end{enumerate}
+	\end{aufgabe}
+	\begin{aufgabe}
+		\begin{enumerate}[label=(\alph*)]
+			\item zu zeigen:
+			\[
+				\forall x = \sum_{i = -N}^{M}x_ib^i \exists p, q: x = \frac{p}{q}
+			\]
+			Wähle hierfür $q = b^{N}$ und $p = \sum_{i = -N}^{M}x_ib^{i+N}$. Dann ist
+			\[
+				x = \frac{\sum_{i = -N}^{M}x_ib^{i + N}}{b^{N}} = \sum_{i = -N}^{M}x_i b^i
+			\]
+			\item Wähle $x = \frac{1}{5}$ und $b = 6$. Dann ist $(x)_b = 0,\overline{1}$
+			\item 
+			\item 
+		\end{enumerate}
+	\end{aufgabe}
+\end{document}
